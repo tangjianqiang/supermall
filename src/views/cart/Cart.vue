@@ -32,9 +32,6 @@ export default {
      shopItem:[]
    }
  },
- created() {
-   this.getUserOrder()
- },
  mounted() {
    this.busRefresh = ()=>{
      if(this.$refs.scroll) {
@@ -56,24 +53,12 @@ export default {
    CartBottomBar
  },
  methods:{
-   ...mapActions(['changeItemStatus','addShopInfo']),
+   ...mapActions(['changeItemStatus']),
    BtnClick(){
-     console.log("当前活跃的path",this.$route);
+     console.log("当前活跃的path",this.$route)
    },
    checkItemAll(status){
      this.changeItemStatus(status)
-   },
-   getUserOrder(){
-     const userOrder = JSON.parse(window.sessionStorage.order)
-     this.addShopInfo({
-       shopId: userOrder.shopId,   //iid
-       decImage: userOrder.decImage, //商品图
-       decTitle: userOrder.decTitle,  //商品标题
-       detailDesc: userOrder.detailDesc,//商品描述
-       shopPrice: userOrder.shopPrice, //商品价格
-       status: userOrder.status, //默认选中
-       num: userOrder.num
-     })
    }
  },
  destroyed() {

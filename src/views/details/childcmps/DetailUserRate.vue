@@ -16,7 +16,7 @@
         <span>{{item.style}}</span>
       </div>
       <div class="rate-img">
-        <img v-for="i in item.images" :src="i" @load="imageLoad" alt="">
+        <img v-for="i in item.images" :src="i" Preview="0" @load="imageLoad" alt="">
       </div>
     </div>
     <div v-else class="rate-content no-pay">
@@ -64,6 +64,8 @@ export default {
     imageLoad(){
       /*事件总线*/
       this.$bus.$emit('item-image-load2')
+      /*photo-view刷新*/
+      this.$previewRefresh()
     },
     clickRateMore(){
       this.$router.push({

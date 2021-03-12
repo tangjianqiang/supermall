@@ -6,7 +6,8 @@
       </span>
     </div>
     <div class="login-info" @click="userLoginTo">
-      <span>{{userLogin.user.userName}}</span>
+      <span class="user-name">{{userLogin.user.userName}}</span>
+      <span class="user-sign" @click="userSignOut">[退出]</span>
     </div>
   </div>
 </template>
@@ -25,6 +26,9 @@ export default {
   methods:{
     userLoginTo(){
       this.$emit('user-login-to')
+    },
+    userSignOut(){
+      this.$emit('user-sign-out')
     }
   }
 }
@@ -63,5 +67,10 @@ export default {
     font-size: 18px;
     margin-left: -10px;
     line-height: 75px;
+    vertical-align: middle;
+  }
+  .login-info span.user-sign{
+    margin-left: 10px;
+    font-size: 15px;
   }
 </style>

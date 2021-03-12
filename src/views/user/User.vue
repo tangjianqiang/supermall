@@ -5,7 +5,7 @@
         <span>个人中心</span>
       </div>
     </UserBar>
-    <UserLoginArea :userLogin="userLogin" @user-login-to="userLoginTo"/>
+    <UserLoginArea :userLogin="userLogin" @user-login-to="userLoginTo" @user-sign-out="userSignOut"/>
     <UserBalance :userPrice="userPrice"/>
     <UserCenterMsg/>
     <UserBottonLoad @go-shop-cart="goShopCart"/>
@@ -72,6 +72,14 @@ export default {
     },
     goShopCart(){
       this.$router.push("/cart")
+    },
+    userSignOut(){
+      //清除本地token
+      window.sessionStorage.clear()
+      //跳转到login
+      this.$router.push("/login")
+
+      console.log(this.$store.state)
     }
   }
 }

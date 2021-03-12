@@ -30,6 +30,7 @@
   </div>
 </template>
 <script>
+/*公共组件*/
 import Tabbar from "components/tabbar/Tabbar";
 import TabbarItem from "components/tabbar/TabbarItem";
 
@@ -42,6 +43,8 @@ export default {
     }
     //在页面关闭/刷新后保存数据信息到sessionStorage里面
     window.addEventListener("beforeunload",()=>{
+      //判断是否有token
+      if(!window.sessionStorage.getItem("data")) return false
       window.sessionStorage.setItem("store",JSON.stringify(this.$store.state))
     },false)
   },
@@ -49,7 +52,9 @@ export default {
     Tabbar,
     TabbarItem
   },
-  methods:{}
+  methods:{
+
+  }
 }
 </script>
 
